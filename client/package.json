@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "electron": "^20.1.1"
+  },
+  "name": "spacerocks",
+  "description": "",
+  "version": "1.0.0",
+  "main": "main.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [
+    "space",
+    "rocks",
+    "API",
+    "electron"
+  ],
+  "author": "Jinny",
+  "license": "MIT"
+}
