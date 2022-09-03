@@ -1,5 +1,21 @@
 (function() {
   "use strict";
+  
+  function animateMenu() {
+    let menu = document.getElementByClassName("menuBg");
+    let nav = document.getElementByClassName("mobileNav");
+
+    if (menu.classList.contains("showMenu")) { 
+        menu.classList.remove("showMenu").classList.add("hideMenu");
+        nav.classList.remove("fadeIn");
+    } else if (menu.classList.contains("hideMenu")) { 
+        menu.classList.remove("hideMenu").classList.add("showMenu");
+        nav.classList.add("fadeIn")
+    } else {
+        menu.classList.add("showMenu"); 
+        nav.classList.add("fadeIn");
+    }
+};
 
   /**
    * Easy selector helper function
@@ -85,24 +101,6 @@
   }
 
   /**
-   * Scrool with ofset on links with a class name .scrollto
-   */
-  on('click', '.scrollto', function(e) {
-    if (select(this.hash)) {
-      e.preventDefault()
-
-      let navbar = select('#navbar')
-      if (navbar.classList.contains('navbar-mobile')) {
-        navbar.classList.remove('navbar-mobile')
-        let navbarToggle = select('.mobile-nav-toggle')
-        navbarToggle.classList.toggle('bi-list')
-        navbarToggle.classList.toggle('bi-x')
-      }
-      scrollto(this.hash)
-    }
-  }, true)
-
-  /**
    * Scroll with ofset on page load with hash links in the url
    */
   window.addEventListener('load', () => {
@@ -125,9 +123,5 @@
     })
   });
 
-  /**
-   * Initiate Pure Counter 
-   */
-  new PureCounter();
-
 })()
+

@@ -1,13 +1,219 @@
-/**
-* Template Name: Regna - v4.8.1
-* Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
+html, body {
+  overflow-x: hidden;
+}
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
+.menu {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow:visible;
+}
+.menu:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.closeTab {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
+  width: 200px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 8501;
+  color: green;
+  animation: bob 2s ease-in-out infinite;
+  -webkit-animation: bob 2s ease-in-out infinite;
+}
+
+.hamburger {
+  position: relative;
+  margin: auto;
+  z-index: 8500;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  float: left;
+}
+
+.hamburger:hover {
+  background-color: white;
+}
+
+.hamburger.open {
+  background-image: none;
+}
+
+
+.menuBg {
+  background:rgba(0, 0, 0, 0.773);
+  width: 3000px;
+  height: 3000px;
+  border-radius: 50%;
+  z-index: 8000;
+  position: fixed;
+  left: 50%;
+  bottom: auto;
+  transform: translateY(-50%) translateX(-50%) scale(0.001);
+  opacity: 0;
+}
+
+.mobileNav {
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+}
+.mobileNav.fadeIn {
+  z-index: 9000;
+}
+.mobileNav li {
+  min-width: 600px;
+  list-style-type: none;
+  border-bottom: 1px solid #FFF;
+  padding: 30px 15px;
+}
+.mobileNav li:last-child {
+  border-bottom: none;
+}
+.mobileNav li a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 35px;
+  font-weight: 600;
+  color: #FFF;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.mobileNav > * {
+  z-index: 0;
+}
+
+.showMenu {
+  -webkit-animation: showMenu 10s cubic-bezier(0.02, 1.25, 1, 1) forwards;
+          animation: showMenu 10s cubic-bezier(0.02, 1.25, 1, 1) forwards;
+}
+
+@-webkit-keyframes showMenu {
+  0% {
+    transform: translateY(-50%) translateX(-50%) scale(0.001);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes showMenu {
+  0% {
+    transform: translateY(-50%) translateX(-50%) scale(0.001);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) scale(1);
+    opacity: 1;
+  }
+}
+.hideMenu {
+  -webkit-animation: hideMenu 0.25s cubic-bezier(0.02, 1.25, 1, 1) forwards;
+          animation: hideMenu 0.25s cubic-bezier(0.02, 1.25, 1) forwards;
+}
+
+@-webkit-keyframes hideMenu {
+  0% {
+    transform: translateY(-50%) translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) scale(0.001);
+    opacity: 0;
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    transform: translateY(-50%) translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%) scale(0.001);
+    opacity: 0;
+  }
+}
+.fadeIn {
+  -webkit-animation: fadeIn 0.25s ease-in forwards;
+          animation: fadeIn 0.25s ease-in forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes bob {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bob {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/**/
+
 body {
   background: #fff;
   color: #666666;
