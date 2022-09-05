@@ -18,7 +18,14 @@ $(document).ready(function() {
 
     $('.hamburger').on('click', function() {
         $(this).toggleClass('open');
-        $(".tableWrapper").css("pointer-events", "all");
+        $(".tableWrapper").css("pointer-events", "all")
+        $('.tableWrapper').css('display', 'block');
+        $('#downScroll').css('display', 'block');
+        $('#rightScroll').css('display', 'block');
+        setTimeout(function() {
+            $('#downScroll').css('display', 'none');
+            $('#rightScroll').css('display', 'none');
+          }, 20000)
         animateMenu();
     });
 
@@ -34,7 +41,14 @@ $(document).ready(function() {
 
     $('#close').on('click', function() {
         console.log('works');
-        //toggle display .tablewrapper
+
+        if ($('.tableWrapper').css('display')=="block") {
+            $('.tableWrapper').css('display', 'none');
+        }
+        else {
+            $('.tableWrapper').css('display', 'block');
+        };
+        
     });  
 
     $('.tableWrapper').click(function(event) {

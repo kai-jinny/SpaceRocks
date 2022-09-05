@@ -10,9 +10,21 @@ async function pointerOff() {
 
 async function dateQuery() {
 
+    $("tr").remove();
+
     var apiKey = "ecd4AJ03QdHqQRDmDYhviTZL3FrndmA4Blmg6E5L"
     var date1 = document.getElementById("date1").value;
     var date2 = document.getElementById("date2").value;
+
+    console.log(date1, date2);
+
+    if (date1 != "" && date2 != "") {
+        $('.subtitle').html(date1 + ' to ' + date2); 
+    }
+    else {
+        $('.subtitle').html('Next 7 Days');
+    };
+    
 
     var apiCall = 'https://api.nasa.gov/neo/rest/v1/feed?start_date='+date1+'&end_date='+date2+'&api_key='+apiKey;
     //console.log(apiCall);

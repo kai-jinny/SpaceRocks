@@ -54,7 +54,7 @@
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <h1>Space Rocks</h1>
             <h2>A search to find asteroids closest to us...</h2>
-            <a href="#searcher" class="btn-get-started">Get Started</a>
+            <a href="#searcher" class="btn-get-started" onclick="">Get Started</a>
         </div>
     </section><!-- End Hero Section -->
 
@@ -70,7 +70,7 @@
                                 <div class="mb-3">
                                     <label for="date1" class="form-label" style="color:white;">Starting Date</label>
                                     <input type="date" id="date1" class="form-control">
-                                    <div id="help" class="form-text" style="color:lightgray;">First Search Day</div>
+                                    <div id="help" class="form-text" style="color:rgba(211, 211, 211, 0.345);"></div>
                                 </div>
                             </div>
 
@@ -78,7 +78,7 @@
                                 <div class="mb-3">
                                     <label for="date2" class="form-label" style="color:white;">End Date</label>
                                     <input type="date" id="date2" class="form-control">
-                                    <div id="help" class="form-text" style="color:lightgray;">Last Search Day</div>
+                                    <div id="help" class="form-text" style="color:rgba(211, 211, 211, 0.345);">Defaults to 7 days after Starting Date</div>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +94,15 @@
                                         
                                         <div class="titleCard">
                                             <h2 class="tableTitle">Near Earth Objects</h2>
-                                            <p class="subtitle">09-02-2022 to 09-02-2022</p>
+                                            <p class="subtitle"></p>
                                         </div>
 
                                         <table id="excelDataTable">
                                         </table>
-
+                                    </div>
+                                    <div>
+                                        <i id="downScroll" class="fa-solid fa-chevron-down"></i>
+                                        <i id="rightScroll" class="fa-solid fa-chevron-right"></i>
                                     </div>
                                 </ul>
                             </a>
@@ -121,16 +124,16 @@
         <div class="container">
             <div class="social-icons">
                 <div
-                    class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                    <a class="btn btn-dark m-3" href="https://github.com/kai-jinny/spacerocks" target="_blank"><i
-                            class="fab fa-github"></i></a>
+                    class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-lg-0">
+                    <a class="btn btn-dark m-3" id="socialIcon" href="https://github.com/kai-jinny/spacerocks" target="_blank"><i
+                            class="fab fa-github" ></i></a>
+                            <p class="credits">MIT © Jinny (Kai Jin) 2022</p>
                 </div>
             </div>
         </div>
     </footer><!-- End Footer -->
 
-    <a id="close" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a id="close" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa-solid fa-table" style="color:#CCCCCC"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
