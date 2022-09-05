@@ -32,20 +32,19 @@
     <!-- Importing Scripts from Main -->
     <script type="text/javascript" src="./assets/js/apiScripts.js">
         window.onload = dateQuery();
+        window.onload =  pointerOff(); 
     </script>
       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="./assets/js/script.js"></script>
 </head>
 
-<body>
+<body onload="pointerOff()">
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="container d-flex justify-content-between align-items-center">
 
             <div id="logo">
-                <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
-                <!-- Uncomment below if you prefer to use a text logo -->
-                <!--<h1><a href="index.html">Regna</a></h1>-->
+                <i class="fa-solid fa-meteor logoImage"></i>
             </div>
         </div>
     </header><!-- End Header -->
@@ -55,12 +54,12 @@
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <h1>Space Rocks</h1>
             <h2>A search to find asteroids closest to us...</h2>
-            <a href="#hero2" class="btn-get-started" onclick="">Get Started</a>
+            <a href="#searcher" class="btn-get-started">Get Started</a>
         </div>
     </section><!-- End Hero Section -->
 
     <!-- ======= Form Section ======= -->
-    <section id="hero">
+    <section id="searcher">
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <h1>Find Asteroids</h1>
             <div class="container-fluid">
@@ -87,22 +86,24 @@
 
                     <div class="container">
                         <div class="menu">
-                            <a class="hamburger btn-get-started" onclick="dateQuery()"> Search
+                            <a class="hamburger btn-get-started"> Search
                                 <div id="overlay" class="menuBg"></div>
                                 <ul class="mobileNav">
-                                    <h2>Near Earth Objects</h2>
-                                    <h3>date1 to date2</h3>
-                                    <table id="table">
-                                        <tr><td>a</td><td>a</td></tr>
+                                    
+                                    <div class="tableWrapper">
                                         
-                                    </table>
+                                        <div class="titleCard">
+                                            <h2 class="tableTitle">Near Earth Objects</h2>
+                                            <p class="subtitle">09-02-2022 to 09-02-2022</p>
+                                        </div>
+
+                                        <table id="excelDataTable">
+                                        </table>
+
+                                    </div>
                                 </ul>
                             </a>
                         </div>
-                    </div>
-
-                    <div class="closeTab" style="display:none;">
-                        <p class="text">Click anywhere to close.</p>
                     </div>
                 </form>
             </div>
@@ -128,7 +129,7 @@
         </div>
     </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+    <a id="close" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->

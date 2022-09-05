@@ -15,22 +15,32 @@ function animateMenu() {
 };
 
 $(document).ready(function() {
+
     $('.hamburger').on('click', function() {
         $(this).toggleClass('open');
-        $('.closeTab').css("display", "flex");
+        $(".tableWrapper").css("pointer-events", "all");
         animateMenu();
     });
 
-    $('.hamburger').on('click', dateQuery);
+    $('.hamburger').on('click', function() {
+        dateQuery();
+    });
 
-    $('.mobileNav a').on('click', function() {
+    $('#close').on('click', function() {
         $('.hamburger').toggleClass('open');
-        $('.closeTab').css("display", "flex");
-        animateMenu();
+        animateMenu(); 
     });
 
-    $('#overlay').on('click', function() {
+
+    $('#close').on('click', function() {
         console.log('works');
-        $('.closeTab').prop("display", "none");
+        //toggle display .tablewrapper
+    });  
+
+    $('.tableWrapper').click(function(event) {
+        // prevent default behavior of click
+        event.preventDefault();
+        return false;
     });
 });
+

@@ -1,101 +1,81 @@
+const { table } = require("console");
 const { json } = require("stream/consumers");
 
+async function pointerOff() {
+    {
+        console.log('onload on');
+        $(".tableWrapper").css("pointer-events", "none");
+    };
+};
+
 async function dateQuery() {
-    var date1 = document.getElementById('date1').value;
-    var date2 = document.getElementById('date2').value;
 
     var apiKey = "ecd4AJ03QdHqQRDmDYhviTZL3FrndmA4Blmg6E5L"
     var date1 = document.getElementById("date1").value;
     var date2 = document.getElementById("date2").value;
 
     var apiCall = 'https://api.nasa.gov/neo/rest/v1/feed?start_date='+date1+'&end_date='+date2+'&api_key='+apiKey;
-    console.log(apiCall);
+    //console.log(apiCall);
     
-    const all = fetch(apiCall)
-    .then(response => response.json())
-    .then(data => {
-        return data;
-    });
+    const result = await fetch(apiCall);
+    const a = await result.json();
 
-    const allData = async () => {
-        const a = await all;
-        console.log(a.element_count);
+    var k = Object.keys(a.near_earth_objects)
+    console.log('num days:', k.length);
+
+    function addAllColumnHeaders() {
+        var columnSet = ["Date", "Name", "Reference ID", "Min Diameter (m)", "Max Diameter (m)", "Potentially Hazardous", "Orbits", "Close Approach Date", "Velocity (km/s)", "Miss Distance (km)"];
+        var headerTr$ = $('<tr/>');
+    
+        for (i=0; i<columnSet.length; i++) {
+            headerTr$.append($('<th/>').html(columnSet[i]));
+        }
+    
+        $("#excelDataTable").append(headerTr$);
+    
+        return columnSet;
     };
 
-   console.log('ok2', allData('near_earth_objects')[0]);
-    /*
-    var list = [
-        {"near_earth_objects":"val_11", "col_2":"val_12", "col_3":"val_13"},
-        {"col_1":"val_21", "col_2":"val_22", "col_3":"val_23"},
-        {"col_1":"val_31", "col_2":"val_32", "col_3":"val_33"}
-    ];
-     
-    el_up.innerHTML = "Click on the button to create the "
-            + "table from the JSON data.<br><br>"
-            + JSON.stringify(list[0]) + "<br>"
-            + JSON.stringify(list[1]) + "<br>"
-            + JSON.stringify(list[2]);  
-     
-    var cols = [];
-        
-    for (var i = 0; i < list.length; i++) {
-        for (var k in list[i]) {
-            if (cols.indexOf(k) === -1) {
-                    
-                // Push all keys to the array
-                cols.push(k);
-            }
-        }
-    }
-        
-    // Create a table element
-    var table = document.createElement("table");
-        
-    // Create table row tr element of a table
-    var tr = table.insertRow(-1);
-        
-    for (var i = 0; i < cols.length; i++) {
+    function buildHtmlTable() {
+        var columns = addAllColumnHeaders();
             
-        // Create the table header th element
-        var theader = document.createElement("th");
-        theader.innerHTML = cols[i];
+        //For each day (number of days)
+        for (i=0;i<k.length;i++) {
+            numObj = a.near_earth_objects[k[i]].length;
+            let date = k[i];
+    
+            //For each object per day
+            for (o=0; o<numObj; o++) {
+                var row$ = $('<tr/>');
+                let name = a.near_earth_objects[k[i]][o].name;
+                let refId = a.near_earth_objects[k[i]][o].neo_reference_id;
+                let minDia = a.near_earth_objects[k[i]][o].estimated_diameter.meters.estimated_diameter_min;
+                let maxDia = a.near_earth_objects[k[i]][o].estimated_diameter.meters.estimated_diameter_max;
+                let hazardous = a.near_earth_objects[k[i]][o].is_potentially_hazardous_asteroid.toString().charAt(0).toUpperCase();
+                let orbits = a.near_earth_objects[k[i]][o].close_approach_data[0].orbiting_body;
+                let approachDate = a.near_earth_objects[k[i]][o].close_approach_data[0].close_approach_date;
+                let velocity = a.near_earth_objects[k[i]][o].close_approach_data[0].relative_velocity.kilometers_per_second;
+                let missDistance = a.near_earth_objects[k[i]][o].close_approach_data[0].miss_distance.kilometers;
+    
+                let dataFrame = [name, refId, minDia, maxDia, hazardous, orbits, approachDate, velocity, missDistance];
             
-        // Append columnName to the table row
-        tr.appendChild(theader);
-    }
-        
-    // Adding the data to the table
-    for (var i = 0; i < list.length; i++) {
-            
-        // Create a new row
-        trow = table.insertRow(-1);
-        for (var j = 0; j < cols.length; j++) {
-            var cell = trow.insertCell(-1);
+                row$.append($('<td/>').html(date));
                 
-            // Inserting the cell at particular place
-            cell.innerHTML = list[i][cols[j]];
-        }
-    }
-        
-    // Add the newly created table containing json data
-    var el = document.getElementById("table");
-    el.innerHTML = "";
-    el.appendChild(table);
-    */
-};
+                dataFrame.forEach(function(obs, i) {
+                    if (obs == null) {
+                        cellValue = "";
+                    }
+                    else {
+                        cellValue = obs;
+                    };
+                    row$.append($('<td/>').html(cellValue));
+                });
 
-async function ok() {
-    const all = fetch("https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=ecd4AJ03QdHqQRDmDYhviTZL3FrndmA4Blmg6E5L")
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    });
-  
-  const allData = async () => {
-    const a = await all;
-    console.log(a);
-  };
-  
-  allData();
+                $("#excelDataTable").append(row$);
+            };
+    
+        };
+    };
 
-};
+    buildHtmlTable();
+}; 
