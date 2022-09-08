@@ -1,4 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600");
+
+#loadWrapper {
+  transition: 1s;
+} 
+
+#loadPercent {
+  position: absolute;
+  top: -3px;
+  right: 20px;
+}
+
+#loadIcon {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  animation: bob 1s infinite;
+}
+
 #downScroll {
 position: absolute;
 top: 150px;
@@ -517,6 +535,10 @@ h6 {
   background: rgba(52, 59, 64, 0.9);
   height: 70px;
   transition: all 0.5s;
+}
+
+#header.header-hidden {
+  background: none!important;
 }
 
 .scrolled-offset {

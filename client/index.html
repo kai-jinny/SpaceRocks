@@ -78,7 +78,7 @@
                                 <div class="mb-3">
                                     <label for="date2" class="form-label" style="color:white;">End Date</label>
                                     <input type="date" id="date2" class="form-control">
-                                    <div id="help" class="form-text" style="color:rgba(211, 211, 211, 0.345);">Defaults to 7 days after Starting Date</div>
+                                    <div id="help" class="form-text" style="color:rgba(211, 211, 211, 0.345);">Max 7 days from Starting Date</div>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,11 @@
                                     <div class="tableWrapper">
                                         
                                         <div class="titleCard">
-                                            <h2 class="tableTitle">Near Earth Objects</h2>
+                                            <h2 class="tableTitle">Near Earth Objects </h2>
+                                            <div id="loadWrapper">
+                                                <i id="loadIcon" class="fa-solid fa-database"></i>
+                                                <p id="loadPercent"></p>
+                                            </div>
                                             <p class="subtitle"></p>
                                         </div>
 

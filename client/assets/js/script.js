@@ -41,6 +41,7 @@ $(document).ready(function() {
 
     $('#close').on('click', function() {
         console.log('works');
+        $('#header').toggleClass('header-hidden');
 
         if ($('.tableWrapper').css('display')=="block") {
             $('.tableWrapper').css('display', 'none');
