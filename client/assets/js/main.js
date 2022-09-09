@@ -85,19 +85,22 @@
   }
 
   /**
-   * Back to top button
+   * Floating Buttons
    */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
+  let floatingButton = select('.floatingButton')
+  let floatingButton2 = select('#export');
+  if (floatingButton) {
+    const togglefloatingButton = () => {
       if (window.scrollY > 100) {
-        backtotop.classList.add('active')
+        floatingButton.classList.add('active');
+        floatingButton2.classList.add('active');
       } else {
-        backtotop.classList.remove('active')
+        floatingButton.classList.remove('active');
+        floatingButton2.classList.remove('active');
       }
     }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    window.addEventListener('load', togglefloatingButton);
+    onscroll(document, togglefloatingButton);
   }
 
   /**

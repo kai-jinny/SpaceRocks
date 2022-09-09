@@ -27,15 +27,12 @@ async function dateQuery() {
     if (date1 != "" && date2 == ""){
         $('.subtitle').html('7 Days From ' + date1); 
     }
-    else {
+    if (date1 == date2) {
         $('.subtitle').html('Next 7 Days');
     };
     
-
     var apiCall = 'https://api.nasa.gov/neo/rest/v1/feed?start_date='+date1+'&end_date='+date2+'&api_key='+apiKey;
     
-
-
     const result = await fetch(apiCall);
     const a = await result.json(); 
 
@@ -43,13 +40,10 @@ async function dateQuery() {
         alert("Error " + result.status + "\nInvalid Date Range");
         $('.subtitle').html('Date Range too Large: Max 7 days');
     }
-    console.log(result.status);
-
-    console.log(a);
     var k = Object.keys(a.near_earth_objects);
     
-    console.log(k);
-    console.log('num days:', k.length);
+    //console.log(k);
+    //console.log('num days:', k.length);
 
     function addAllColumnHeaders() {
         var columnSet = ["Date", "Name", "Reference ID", "Min Diameter (m)", "Max Diameter (m)", "Potentially Hazardous", "Orbits", "Close Approach Date", "Velocity (km/s)", "Miss Distance (km)"];
@@ -101,7 +95,7 @@ async function dateQuery() {
                     };
                     row$.append($('<td/>').html(cellValue));
                     let loadPercent = ((objCount/numObj * 100)/numDays);
-                    console.log(loadPercent);
+                    //console.log(loadPercent);
                     $("#loadPercent").html(Math.round(loadPercent));
                 });
 
@@ -119,3 +113,37 @@ async function dateQuery() {
 
     buildHtmlTable();
 }; 
+
+async function download_table_as_csv(table_id, separator = ',') {
+    console.log('#' + table_id)
+    // Select rows from table_id
+    
+    var rows = document.querySelectorAll('table#' + table_id + ' tr');
+    //console.log(rows)
+    // Construct csv
+    var csv = [];
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll('td, th');
+        for (var j = 0; j < cols.length; j++) {
+            // Clean innertext to remove multiple spaces and jumpline (break csv)
+            var data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, '').replace(/(\s\s)/gm, ' ')
+            // Escape double-quote with double-double-quote (see https://stackoverflow.com/questions/17808511/properly-escape-a-double-quote-in-csv)
+            data = data.replace(/"/g, '""');
+            // Push escaped string
+            row.push('"' + data + '"');
+        }
+        csv.push(row.join(separator));
+    }
+    var csv_string = csv.join('\n');
+    
+    // Download it
+    var filename = 'spaceRocks_' + 'data' + '.csv';
+    var link = document.createElement('a');
+    link.style.display = 'none';
+    link.setAttribute('target', '_blank');
+    link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv_string));
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};

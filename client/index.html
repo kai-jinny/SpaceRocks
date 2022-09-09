@@ -28,13 +28,6 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- Importing Scripts from Main -->
-    <script type="text/javascript" src="./assets/js/apiScripts.js">
-        window.onload = dateQuery();
-        window.onload =  pointerOff(); 
-    </script>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="./assets/js/script.js"></script>
 </head>
 
 <body onload="pointerOff()">
@@ -137,7 +130,11 @@
         </div>
     </footer><!-- End Footer -->
 
-    <a id="close" class="back-to-top d-flex align-items-center justify-content-center"><i class="fa-solid fa-table" style="color:#CCCCCC"></i></a>
+    <div id="close" class="tooltip floatingButton d-flex align-items-center justify-content-center"><span class="tooltiptext minmax">Toggle Table</span>
+        <i class="fa-solid fa-table" style="color:#CCCCCC"></i></div>
+    <div id="export" class="tooltip floatingButton d-flex align-items-center justify-content-center" onclick="download_table_as_csv('excelDataTable')"><span class="tooltiptext">Export Data to CSV</span>
+        <i class="fa-solid fa-file-export" style="color:#CCCCCC"></i>
+    </div>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/aos/aos.js"></script>
@@ -145,6 +142,19 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Importing Scripts from Main -->
+    <script type="text/javascript" src="./assets/js/apiScripts.js">
+        window.onload = dateQuery();
+        window.onload =  pointerOff(); 
+        window.onload = download_table_as_csv();
+    </script>
+
+    <!-- JQuery -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    
+    <!-- Menu Actions and Page Interactions-->
+    <script src="./assets/js/script.js"></script>
 
 </body>
 

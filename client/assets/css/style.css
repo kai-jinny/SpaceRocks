@@ -456,15 +456,63 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Back to top button
+# Tooltips
 --------------------------------------------------------------*/
-.back-to-top {
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #212529;
+  color: #CCCCCC;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #212529 transparent transparent transparent;
+  opacity: 1;
+}
+
+.tooltip:hover:after {
+  opacity: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Floating Buttons
+--------------------------------------------------------------*/
+.floatingButton {
   position: fixed;
   visibility: hidden;
   opacity: 0;
   right: 15px;
   bottom: 15px;
-  z-index: 996;
+  z-index: 995;
   background: #7B6567;
   width: 40px;
   height: 40px;
@@ -472,20 +520,25 @@ h6 {
   transition: all 0.4s;
 }
 
-.back-to-top i {
+.floatingButton i {
   font-size: 28px;
-  color: #fff;
+  color: #CCCCCC;
   line-height: 0;
 }
 
-.back-to-top:hover {
+.floatingButton:hover {
   background: #A38F91;
   color: #fff;
 }
 
-.back-to-top.active {
+.floatingButton.active {
   visibility: visible;
   opacity: 1;
+}
+
+#export {
+  right: 65px;
+  bottom: 15px;
 }
 
 /*--------------------------------------------------------------
