@@ -9,8 +9,9 @@ Open the project in your IDE of choice. Using a command-line interface, navigate
 npm install
 ```
 
-Start the application in the command-line using the following command:
+Navigate to the client directory using the CLI and start the application in the command-line using the following commands:
 ```
+cd client
 npm run start
 ```
 
@@ -32,6 +33,9 @@ In the case that neither a ```Starting Date``` or ```End Date``` are given, Spac
 Asteroids will be shown in a tabulated form. The user may scroll right to see more data fields, and scroll down to look at more entries within the given timeframe.
 
 To **minimise** the table, click the icon on the bottom right.
+
+### Exporting Data
+Data grabbed from SpaceRocks can be exported using the ```Export Data to CSV``` button on the bottom right of the user interface.
 
 ## License
 Developed by [Aime](https://www.github.com/kai-jinny) (Kai Jin) (2022)

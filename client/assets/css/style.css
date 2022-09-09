@@ -466,20 +466,21 @@ h6 {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 80px;
   background-color: #212529;
   color: #CCCCCC;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
+  padding: 6px 0;
   position: absolute;
   z-index: 1;
   bottom: 150%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -40px;
   opacity: 0;
   -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
 }
 
 .tooltip .tooltiptext::after {
@@ -510,7 +511,7 @@ h6 {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
+  right: 20px;
   bottom: 15px;
   z-index: 995;
   background: #7B6567;
@@ -537,7 +538,7 @@ h6 {
 }
 
 #export {
-  right: 65px;
+  right: 70px;
   bottom: 15px;
 }
 
