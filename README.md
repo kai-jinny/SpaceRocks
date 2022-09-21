@@ -1,7 +1,7 @@
 # SpaceRocks
  
  ## Overview
- SpaceRocks is a an Electron based SPA which allows the user to find asteroids close to the surface of Earth at between any given dates. Asteroid information is also displayed when available.
+ SpaceRocks is a an Electron based SPA which allows the user to find asteroids close to the surface of Earth at between any given dates. Asteroid information is also displayed when available. Users can also download data in a CSV format for analysis.
 
 ## Installation
 Open the project in your IDE of choice. Using a command-line interface, navigate to the ```client``` folder and use the following command to retrieve and install all dependencies:
