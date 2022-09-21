@@ -6,12 +6,13 @@
 ## Installation
 Open the project in your IDE of choice. Using a command-line interface, navigate to the ```client``` folder and use the following command to retrieve and install all dependencies:
 ```
+cd client
 npm install
 ```
 
 Navigate to the client directory using the CLI and start the application in the command-line using the following commands:
 ```
-cd client
+cd client #if not already in the client folder
 npm run start
 ```
 
